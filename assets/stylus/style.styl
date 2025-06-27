@@ -1,0 +1,130 @@
+@font-face
+  font-family: "Montserrat"
+  src: url("../fonts/Montserrat/Montserrat-VariableFont_wght.ttf") format("truetype")
+  font-weight: 500 700
+
+@font-face
+  font-family: "Fraunces"
+  src: url("../fonts/Fraunces/Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf") format("truetype")
+  font-weight: 700
+
+//-------------Variables & Hashes
+primaryColor = {
+  green500:hsl(158, 36%, 37%),
+  green700:hsl(158, 42%, 18%)
+}
+
+neutralColor = {
+  white: hsl(0, 0%, 100%),
+  black: hsl(212, 21%, 14%),
+  grey: hsl(228, 12%, 48%),
+  cream: hsl(30, 38%, 92%)
+}
+
+borderRadiusSize = 10px
+//-------------Mixins & Functions
+border-radius(args...)
+  border-start-start-radius: args[0]
+  border-end-start-radius: length(args) == 1 ? args[0]:args[1]
+  border-start-end-radius: length(args) == 1 ? args[0]:args[2]
+  border-end-end-radius: length(args) == 1 ? args[0]:args[3]
+
+custom-font(font, weight = 700)
+  font-family: font, serif
+  font-weight: weight
+
+media-desktop()
+  @media screen and (min-width: 60.01em)
+    {block}
+
+//----------------Globals
+p
+  font-size: 0.875em
+  color: neutralColor.grey
+
+button
+  background-color: primaryColor.green500
+  color: neutralColor.white
+  font-weight: 700
+  inline-size: 100%
+  border-radius: borderRadiusSize
+  padding-block: clamp(1.225em, 3vw, 1.375em)
+
+  &:hover
+    background-color: primaryColor.green700
+    cursor: pointer
+
+  &::before
+    content: url("../images/icon-cart.svg")
+    position: relative
+    inset-inline-end: clamp(0.875em, 1vw, 1em)
+    inset-block-start: clamp(0.125em, 1vw, 0.225em)
+
+
+html
+  custom-font("Montserrat", 500)
+
+body
+  background-color: neutralColor.cream
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block-start: clamp(1.625em, 5vw, 2em)
+
+  +media-desktop()
+    min-block-size: 100vh
+    margin-block: 0
+    margin-inline: 0
+
+main
+  background-color: neutralColor.white
+  border-radius: borderRadiusSize
+  display: flex
+  align-items: center
+  flex-direction: column
+  padding-block-end: clamp(2rem, 3vw, 3rem)
+  inline-size: clamp(21.625em, 5vw, 22em)
+
+  +media-desktop()
+    flex-direction: row
+    inline-size: unquote("min(700px,68vw)")
+    padding-block-end: 0
+
+main section:first-child
+  inline-size: 100%
+
+header img
+  inline-size: 100%
+  object-fit: cover
+  border-radius: borderRadiusSize initial borderRadiusSize initial
+  +media-desktop()
+    border-radius: borderRadiusSize borderRadiusSize initial initial
+
+
+main section:nth-child(2)
+  padding-inline: clamp(1.625rem, 5vw, 2rem)
+
+  & hgroup
+    & p
+      letter-spacing: 0.25em
+
+    & h1
+      custom-font("Fraunces")
+      font-size: 2em
+      line-height: 1.1
+      margin-block: clamp(1rem, 4vw, 1.5rem)
+
+  & > p
+    line-height: 1.6
+
+  & section
+    display: flex
+    align-items: center
+    column-gap: 1em
+
+    & p:first-child
+      custom-font("Fraunces")
+      color: primaryColor.green500
+      font-size: 2em
+      margin-block: clamp(.375em, 3vw, .625em)
+
