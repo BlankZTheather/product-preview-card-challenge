@@ -17,4 +17,5 @@ This is my solution to the product preview card component challenge from fronten
 | ![My Solution0](./mysolution.jpg) | ![Goal](./goal.jpg) |
 
 ### Links
+- [Submission Page](https://www.frontendmentor.io/solutions/product-preview-card-using-stylus-G2AAdqyto_)
 - [Live Site](https://blankztheather.github.io/product-preview-card-challenge)
